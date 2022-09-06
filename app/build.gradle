@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: "org.sonarqube"
 
 android {
     compileSdkVersion 26
@@ -33,3 +34,18 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.14.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
 }
+sonarqube {
+    properties {
+        property "sonar.projectName", "tech-olx"
+        property "sonar.projectKey", "tech-olx"
+        property "sonar.tests", ["src/test/java"]
+        property "sonar.test.inclusions", "**/*Test*/**"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "src/main/java"
+        property "sonar.exclusions", '**/Test*/**,'
+                  '*.json,'
+                  '**/*test*/**'
+                  '**/.gradle/**'
+                  '**/R.class'
+                  }
+           }
